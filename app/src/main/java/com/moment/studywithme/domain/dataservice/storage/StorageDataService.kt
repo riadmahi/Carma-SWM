@@ -11,4 +11,5 @@ interface StorageDataService {
     fun getUserPreferences(): UserPreferences
     fun createUserPreferences(userPreferences: UserPreferences)
     fun updateUserPreferences(userPreferences: UserPreferences)
+    fun checkIfUserPreferencesExist(): Boolean
 }

@@ -7,7 +7,7 @@ import com.moment.studywithme.domain.dao.TaskDao
 import com.moment.studywithme.domain.dao.UserPreferencesDao
 import com.moment.studywithme.domain.model.UserPreferences
 
-@Database(entities = [Task::class, UserPreferences::class], version = 2)
+@Database(entities = [Task::class, UserPreferences::class], version = 3)
 abstract class SWMDatabase : RoomDatabase() {
     abstract fun taskDao(): TaskDao
     abstract fun userPreferencesDao(): UserPreferencesDao

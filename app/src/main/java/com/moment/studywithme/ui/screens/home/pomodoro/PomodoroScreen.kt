@@ -1,7 +1,6 @@
 package com.moment.studywithme.ui.screens.home.pomodoro
 
 import android.annotation.SuppressLint
-import android.graphics.Insets.add
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import androidx.compose.foundation.layout.Arrangement
@@ -46,8 +45,6 @@ import com.moment.studywithme.domain.model.Task
 import com.moment.studywithme.ui.component.SWMButton
 import com.moment.studywithme.ui.component.SWMIconButton
 import com.moment.studywithme.ui.screens.home.TimerPickerBottomSheetDialog
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -85,7 +82,7 @@ fun PomodoroScreen(viewModel: PomodoroViewModel) {
     if (openSettingsDialog.value) {
         PomodoroBottomSheetDialog(
             sheetState = sheetState,
-            defaultTimer = uiState.timer,
+            defaultTimer ="${(uiState.userPreferences.defaultTimerInMs / 60000).toInt()}:00",
             onTimerChanged = {
                 openSettingsDialog.value = false
                 openDefaultTimerDialog.value = true

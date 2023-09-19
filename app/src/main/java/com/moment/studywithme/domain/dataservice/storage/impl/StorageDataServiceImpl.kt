@@ -23,12 +23,14 @@ class StorageDataServiceImpl(private val db: SWMDatabase) : StorageDataService {
     }
 
     override fun getUserPreferences(): UserPreferences {
-        var userPref = db.userPreferencesDao().getUserPreferences()
-        if (userPref == null) {
-            userPref = UserPreferences()
-            createUserPreferences(userPreferences = userPref)
+        return if(checkIfUserPreferencesExist()){
+            println("exist")
+            db.userPreferencesDao().getUserPreferences()
+        } else {
+            println("not exist")
+            createUserPreferences(userPreferences = UserPreferences())
+            return UserPreferences()
         }
-        return userPref
     }
 
     override fun createUserPreferences(userPreferences: UserPreferences) {
@@ -36,6 +38,11 @@ class StorageDataServiceImpl(private val db: SWMDatabase) : StorageDataService {
     }
 
     override fun updateUserPreferences(userPreferences: UserPreferences) {
+        println("update user pref ${userPreferences.uid}")
         db.userPreferencesDao().update(userPreferences)
+    }
+
+    override fun checkIfUserPreferencesExist(): Boolean {
+        return db.userPreferencesDao().checkIfUserPreferencesExist()
     }
 }

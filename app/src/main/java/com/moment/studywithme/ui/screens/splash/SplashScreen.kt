@@ -24,7 +24,7 @@ import com.moment.studywithme.Screen
 fun SplashScreen(navController: NavController) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.animation_loading_hand))
     val logoAnimationState =
-        animateLottieCompositionAsState(composition = composition)
+        animateLottieCompositionAsState(composition = composition, speed = 1.25f)
     Column(
         modifier = Modifier
             .fillMaxSize()
